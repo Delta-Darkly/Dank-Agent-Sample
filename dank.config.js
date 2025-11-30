@@ -17,11 +17,6 @@
 const { createAgent } = require('dank-ai');
 
 // Agent IDs - Generated UUIDv4 identifiers for each agent
-// These IDs are used to uniquely identify your agents across deployments
-const AGENT_IDS = {
-  PROMPT_AGENT: 'c20dcd0b-0237-477d-8a6e-daef02ba7bef'
-};
-
 module.exports = {
   // Project configuration
   name: '.',
@@ -31,7 +26,7 @@ module.exports = {
   agents: [
     // Example 1: Direct Prompting Agent with Event Handlers
     createAgent('prompt-agent')
-      .setId(AGENT_IDS.PROMPT_AGENT) // Required: Unique UUIDv4 identifier
+      .setId(process.env.PROMPT_AGENT_ID) // Required: Unique UUIDv4 identifier
       .setLLM('openai', {
         apiKey: process.env.OPENAI_API_KEY,
         model: 'gpt-3.5-turbo',
